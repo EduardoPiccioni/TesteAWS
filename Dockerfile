@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 FROM public.ecr.aws/docker/library/node:21-slim
 RUN npm install -g npm@latest --loglevel=error
 
 #Instalando o curl
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
+=======
+FROM node:21-slim
+
+RUN npm install -g npm@latest --loglevel=error
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -12,7 +18,11 @@ RUN npm install --loglevel=error
 
 COPY . .
 
+<<<<<<< HEAD
 RUN NODE_OPTIONS=--openssl-legacy-provider REACT_APP_API_URL=http://localhost:3001 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
+=======
+RUN REACT_APP_API_URL=http://localhost:3001 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
 
 RUN mv client/build build
 
