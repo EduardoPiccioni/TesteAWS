@@ -29,7 +29,11 @@
 npm-debug.log*
 yarn-debug.log*
 <<<<<<< HEAD
+<<<<<<< HEAD
 yarn-error.log*
 =======
 yarn-error.log*
 >>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+yarn-error.log*
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4

@@ -1,12 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const initializeModels = require("../models");
 =======
 const { Tarefas } = require("../models");
 >>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+const { Tarefas } = require("../models");
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
 
 module.exports = () => {
   const controller = {};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   controller.create = async (req, res) => {
     try {
@@ -107,6 +112,8 @@ module.exports = () => {
   };
 
 =======
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
   controller.create = (req, res) => {
     let tarefa = {
       titulo: req.body.titulo,
@@ -187,6 +194,9 @@ module.exports = () => {
         });
       });
   };
+<<<<<<< HEAD
 >>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
   return controller;
 };

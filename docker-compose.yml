@@ -1,15 +1,22 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 version: "3"
 >>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+version: "3"
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
 services:
   server:
     build: .
     container_name: bia
     ports:
 <<<<<<< HEAD
+<<<<<<< HEAD
       - 80:8080
 =======
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
       - 3001:8080
     links:
       - database
@@ -31,4 +38,7 @@ services:
       - db:/var/lib/postgresql/data
 volumes:
   db:
+<<<<<<< HEAD
 >>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4

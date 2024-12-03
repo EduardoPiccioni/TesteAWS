@@ -5,6 +5,7 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 <<<<<<< HEAD
+<<<<<<< HEAD
 const getConfig = require("../../config/database.js");
 
 const db = {};
@@ -40,6 +41,8 @@ const initializeModels = async () => {
 
 module.exports = initializeModels;
 =======
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
 const config = require("../../config/database.js");
 
 const db = {};
@@ -69,4 +72,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+<<<<<<< HEAD
 >>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
