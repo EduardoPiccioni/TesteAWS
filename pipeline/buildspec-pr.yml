@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+<<<<<<< HEAD
+      - echo Installingg Node 21 e npm..
+=======
+      - echo Installing Node 21 e npm...
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
+      - curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -
+      - sudo yum install -y nodejs
+  build:
+    commands:
+      - npm install --loglevel=error
+      - REACT_APP_API_URL=http://localhost:3001 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
+<<<<<<< HEAD
+      - echo Rodando teste unitários
+=======
+      - echo Rodando testes unitários
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
+      - npm test

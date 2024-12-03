@@ -1,4 +1,6 @@
 module.exports = (app) => {
+<<<<<<< HEAD
+<<<<<<< HEAD
   const controllerFactory = require("../controllers/tarefas");
   const controller = controllerFactory();
 
@@ -44,4 +46,19 @@ module.exports = (app) => {
         next(err);
       }
     });
+=======
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
+  const controller = require("../controllers/tarefas")();
+
+  app.route("/api/tarefas").get(controller.findAll).post(controller.create);
+  app.route("/api/tarefas/:uuid").get(controller.find);
+  app
+    .route("/api/tarefas/update_priority/:uuid")
+    .put(controller.update_priority);
+  app.route("/api/tarefas/:uuid").delete(controller.delete);
+<<<<<<< HEAD
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
 };

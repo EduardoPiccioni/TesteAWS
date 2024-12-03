@@ -34,6 +34,8 @@ const DadosHenrylle = () => {
             Instagram do Henrylle Maia
           </a>
         </li>
+<<<<<<< HEAD
+<<<<<<< HEAD
         <li>
           <a
             href="https://www.youtube.com/@henryllemaia"
@@ -52,6 +54,10 @@ const DadosHenrylle = () => {
             Desafio Labs de AWS dos alunos no Linkedin
           </a>
         </li>
+=======
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
       </ul>
     </div>
   );

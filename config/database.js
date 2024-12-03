@@ -1,8 +1,28 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 const { SecretsManagerClient, GetSecretValueCommand } = require("@aws-sdk/client-secrets-manager");
 const { fromIni, fromEnv } = require("@aws-sdk/credential-providers");
 const { STSClient, GetCallerIdentityCommand } = require("@aws-sdk/client-sts");
 
 async function isLocalConnection() {
+=======
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
+module.exports = {
+  username: process.env.DB_USER || "postgres",
+  password: process.env.DB_PWD || "postgres",
+  database: "bia",
+  host: process.env.DB_HOST || "127.0.0.1",
+  port: process.env.DB_PORT || 5433,
+  dialect: "postgres",
+  dialectOptions: isLocalConnection() ? {} : getRemoteDialectOptions(),
+};
+
+function isLocalConnection() {
+<<<<<<< HEAD
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
   // Lógica para determinar se a conexão é local
   return (
     process.env.DB_HOST === undefined ||
@@ -12,7 +32,15 @@ async function isLocalConnection() {
   );
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 async function getRemoteDialectOptions() {
+=======
+function getRemoteDialectOptions() {
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+function getRemoteDialectOptions() {
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
   // Configurações específicas para conexões remotas (útil a partir do pg 15)
   return {
     ssl: {
@@ -21,6 +49,8 @@ async function getRemoteDialectOptions() {
     },
   };
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 async function getConfig(){
   let dbConfig = {
@@ -112,3 +142,7 @@ async function getSecrets(secretsManagerClient) {
 
 module.exports = getConfig;
 
+=======
+>>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
+=======
+>>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
