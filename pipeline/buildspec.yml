@@ -27,7 +27,5 @@ phases:
 artifacts:
   files:
     - imagedefinitions.json
-  name: my-artifacts.zip
-  discard-paths: yes
-  base-directory: /path/to/files
-  bucket: "bia-hml" 
+  base-directory: .
+  bucket: "bia-hml"
