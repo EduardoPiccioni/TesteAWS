@@ -7,17 +7,6 @@
     "test": "jest tests/unit",
     "start": "node server",
     "start_db": "node config/database.js"
-
-83649143cc91188e0f3a7534ff54971c594552c4
-  "version": "1.0.1",
-  "description": "### Período do evento: 18 a 24 de Março/2024 (Online e ao vivo às 20h)",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest tests/unit",
-    "start": "node server"
-8364914 (Primeiro commit no branch pr-cicd)
-
-83649143cc91188e0f3a7534ff54971c594552c4
   },
   "repository": {
     "type": "git",
@@ -30,14 +19,9 @@
   },
   "homepage": "https://github.com/henrylle/bia#readme",
   "dependencies": {
-
     "@aws-sdk/client-secrets-manager": "^3.583.0",
     "@aws-sdk/client-sts": "^3.583.0",
     "@aws-sdk/credential-providers": "^3.583.0",
-
-8364914 (Primeiro commit no branch pr-cicd)
-
-83649143cc91188e0f3a7534ff54971c594552c4
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -61,9 +45,7 @@
     "web-vitals": "^1.0.1"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "extends": ["react-app"]
   },
   "devDependencies": {
     "jest": "^27.5.1",
