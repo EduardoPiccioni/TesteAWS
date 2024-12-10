@@ -45,10 +45,13 @@
     "web-vitals": "^1.0.1"
   },
   "eslintConfig": {
-    "extends": ["react-app"]
+    "extends": [
+      "react-app"
+    ]
   },
   "devDependencies": {
     "jest": "^27.5.1",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.20.0"
   }
 }
