@@ -1,28 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 const { SecretsManagerClient, GetSecretValueCommand } = require("@aws-sdk/client-secrets-manager");
 const { fromIni, fromEnv } = require("@aws-sdk/credential-providers");
 const { STSClient, GetCallerIdentityCommand } = require("@aws-sdk/client-sts");
 
-async function isLocalConnection() {
-=======
-=======
->>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
-module.exports = {
-  username: process.env.DB_USER || "postgres",
-  password: process.env.DB_PWD || "postgres",
-  database: "bia",
-  host: process.env.DB_HOST || "127.0.0.1",
-  port: process.env.DB_PORT || 5433,
-  dialect: "postgres",
-  dialectOptions: isLocalConnection() ? {} : getRemoteDialectOptions(),
-};
-
 function isLocalConnection() {
-<<<<<<< HEAD
->>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
-=======
->>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
   // Lógica para determinar se a conexão é local
   return (
     process.env.DB_HOST === undefined ||
@@ -32,15 +12,7 @@ function isLocalConnection() {
   );
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-async function getRemoteDialectOptions() {
-=======
 function getRemoteDialectOptions() {
->>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
-=======
-function getRemoteDialectOptions() {
->>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
   // Configurações específicas para conexões remotas (útil a partir do pg 15)
   return {
     ssl: {
@@ -49,10 +21,8 @@ function getRemoteDialectOptions() {
     },
   };
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-async function getConfig(){
+async function getConfig() {
   let dbConfig = {
     username: process.env.DB_USER || "postgres",
     password: process.env.DB_PWD || "postgres",
@@ -60,14 +30,14 @@ async function getConfig(){
     host: process.env.DB_HOST || "127.0.0.1",
     port: process.env.DB_PORT || 5433,
     dialect: "postgres",
-    dialectOptions: await isLocalConnection() ? {} : await getRemoteDialectOptions(),
+    dialectOptions: isLocalConnection() ? {} : getRemoteDialectOptions(),
   };
 
-  if(process.env.DB_SECRET_NAME && process.env.DB_SECRET_NAME.trim() !== '' ){
+  if (process.env.DB_SECRET_NAME && process.env.DB_SECRET_NAME.trim() !== "") {
     const secretsManagerClient = await createSecretsManagerClient();
     const secrets = await getSecrets(secretsManagerClient);
 
-    if(secrets){
+    if (secrets) {
       dbConfig.username = secrets.username;
       dbConfig.password = secrets.password;
 
@@ -78,71 +48,62 @@ async function getConfig(){
 }
 
 async function createSecretsManagerClient() {
-  // Verifica se a variável de ambiente está definida e não está vazia
   let credentials;
-  
+
   if (process.env.IS_LOCAL === "true") {
     credentials = fromEnv();
-    //credentials = fromIni({ profile: "SEU_PROFILE" });
   }
-  
+
   if (process.env.DB_SECRET_NAME) {
-    // Instancia o cliente do Secrets Manager
     const client = new SecretsManagerClient({
       region: process.env.DB_REGION,
-      credentials
+      credentials,
     });
 
-  if(process.env.DEBUG_SECRET === "true"){
-    const stsClient = new STSClient({
-      region: process.env.DB_REGION,
-      credentials
-    });
+    if (process.env.DEBUG_SECRET === "true") {
+      const stsClient = new STSClient({
+        region: process.env.DB_REGION,
+        credentials,
+      });
 
-    try {
-      const identity = await stsClient.send(new GetCallerIdentityCommand({}));
-      console.log('Credenciais carregadas com sucesso:', identity);
-      console.log('Account ID:', identity.Account);
-    } catch (error) {
-      console.error('Erro ao carregar credenciais:', error);
+      try {
+        const identity = await stsClient.send(new GetCallerIdentityCommand({}));
+        console.log("Credenciais carregadas com sucesso:", identity);
+        console.log("Account ID:", identity.Account);
+      } catch (error) {
+        console.error("Erro ao carregar credenciais:", error);
+      }
     }
-  }
     return client;
   } else {
-    console.log('DB_SECRET_NAME não está definida. Se for usar secrets, informe também DB_REGION.');
+    console.log("DB_SECRET_NAME não está definida. Se for usar secrets, informe também DB_REGION.");
     return null;
   }
 }
 
-async function imprimirSecrets(secrets){
-  if(process.env.DEBUG_SECRET === "true")
-    console.log(secrets);
+async function imprimirSecrets(secrets) {
+  if (process.env.DEBUG_SECRET === "true") console.log(secrets);
 }
 
 async function getSecrets(secretsManagerClient) {
   try {
     if (!secretsManagerClient) {
-      console.error('O cliente do Secrets Manager não foi instanciado.');
+      console.error("O cliente do Secrets Manager não foi instanciado.");
       return;
     }
     console.log(`Vou trabalhar com o secrets ${process.env.DB_SECRET_NAME}`);
     const command = new GetSecretValueCommand({ SecretId: process.env.DB_SECRET_NAME });
     const data = await secretsManagerClient.send(command);
 
-    if ('SecretString' in data) {
+    if ("SecretString" in data) {
       return JSON.parse(data.SecretString);
     } else {
-      return Buffer.from(data.SecretBinary, 'base64');
+      return Buffer.from(data.SecretBinary, "base64");
     }
   } catch (err) {
-    console.error('Erro ao recuperar as credenciais do Secrets Manager:', err);
+    console.error("Erro ao recuperar as credenciais do Secrets Manager:", err);
     throw err;
   }
 }
 
 module.exports = getConfig;
-
-=======
->>>>>>> 8364914 (Primeiro commit no branch pr-cicd)
-=======
->>>>>>> 83649143cc91188e0f3a7534ff54971c594552c4
